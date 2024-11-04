@@ -23,3 +23,8 @@
   - useRouter 훅을 불러와서 사용. 다만 페이지 라우터는 next/navigation을 사용쓰는것이 아닌 next/router를 사용해야함.
   - 쿼리스트링이 있으면 그 페이지가 2번 랜더링 됌.
   - 사용할때는 route.query.{쿼리스트링 key값}
+  - pathname 쓸때도 따로 usePathname 쓰는것이 아닌 route.query.[페이지명 혹은 다이나믹 라우팅 폴더명]
+    - 여러개의 pathname을 가져오려면 catch all Segment 페이지를 넣어주면 됌. [...id] 이렇게 전개연산자 넣어서 설정해주면 됌
+      - 여러개 저장되는건 배열형태로 저장됌
+      - 다만 catch all segment로 대응하지 않는 페이지가 있음. 바로 /뒤에 아무것도 없는페이지. 이거 해결하려면 index 파일을 넣어주거나, 대괄호를 한번 더 감싸주면 /뒤에가 없는 페이지도 대응됌. -> optional catch all segement.
+- 404페이지 : 최상위 root에 404.tsx 페이지 만들어두면 됌
