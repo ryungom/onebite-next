@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  background: black;
+  color: #fff;
+}
+.bodyWrap {
+  width: 100vw;
+  max-width: 800px;
+  margin: 0px auto;
+  padding: 0 20px;
+}
+
+header h1 {
+  color: rgb(229, 9, 20);
+  font-size: 20px;
+}

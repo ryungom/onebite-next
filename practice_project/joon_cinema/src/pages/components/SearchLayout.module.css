@@ -1,0 +1,19 @@
+.inputWrap {
+  display: flex;
+  column-gap: 10px;
+  margin: 20px 0;
+}
+.inputWrap > input {
+  flex: 1;
+  border-radius: 5px;
+  border: 1px solid #666;
+  height: 50px;
+  background: black;
+  padding: 0 20px;
+  font-size: 1rem;
+}
+.inputWrap > button {
+  background: #666;
+  padding: 0 20px;
+  border-radius: 5%;
+}
