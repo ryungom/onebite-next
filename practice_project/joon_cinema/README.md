@@ -14,3 +14,8 @@
   - 결과페이지
     - ![image](https://github.com/user-attachments/assets/87acbd28-6d53-4f45-9d8d-c598926add17)
   
+## day06
+- getServerSideProps를 이용한 데이터 fetching
+  - ![image](https://github.com/user-attachments/assets/ab9c9731-14ed-412b-8fc6-50e7f9c0fdb3)
+  - 잘 나오긴 하는데 커스텀한 상세페이지에서 영화 길이가 길어질 경우... 제작사도 길 경우를 고려 안했더니 이런 처참한 UI가...이 부분은 다음 챌린지 전에 다시 깔끔하게 고쳐봐야겠다.
+ 
