@@ -1,21 +1,26 @@
 import SearchableLayout from "@/components/searchable-layout";
 import { ReactNode } from "react";
 import style from "./index.module.css";
-import books from "@/mock/books.json";
 import BookItem from "@/components/book-item";
-import { InferGetServerSidePropsType } from "next";
+import { InferGetStaticPropsType } from "next";
 import fetchBoooks from "@/lib/fetch-books";
 import fetchRandomBooks from "@/lib/fetch-random-books";
 
-export const getServerSideProps = async () => {
-  const [allBooks, recoBooks] = await Promise.all([fetchBoooks(), fetchRandomBooks()]);
+export const getStaticProps = async () => {
+  const [allBooks, recoBooks] = await Promise.all([
+    fetchBoooks(),
+    fetchRandomBooks(),
+  ]);
 
   return {
     props: { allBooks, recoBooks },
   };
 };
 
-export default function Home({ allBooks, recoBooks }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Home({
+  allBooks,
+  recoBooks,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div className={style.container}>
       <section>

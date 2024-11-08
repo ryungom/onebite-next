@@ -1,8 +1,19 @@
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
+import { GetStaticPropsContext, InferGetStaticPropsType } from "next";
 import style from "./[id].module.css";
 import fetchOneBook from "@/lib/fetch-one-books";
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
+export const getStaticPaths = () => {
+  return {
+    paths: [
+      { params: { id: "1" } },
+      { params: { id: "2" } },
+      { params: { id: "3" } },
+    ],
+    fallback: true,
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const id = context.params!.id;
   const book = await fetchOneBook(Number(id));
   return {
@@ -10,12 +21,18 @@ export const getServerSideProps = async (context: GetServerSidePropsContext) => 
   };
 };
 
-export default function Page({ book }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+export default function Page({
+  book,
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!book) return "문제발생했습니다. 재준님에게 연락하세요";
-  const { id, title, subTitle, description, author, publisher, coverImgUrl } = book;
+  const { id, title, subTitle, description, author, publisher, coverImgUrl } =
+    book;
   return (
-    <div className={style.container}>
-      <div style={{ backgroundImage: `url('${coverImgUrl}')` }} className={style.cover_img_container}>
+    <div className={style.container} key={id}>
+      <div
+        style={{ backgroundImage: `url('${coverImgUrl}')` }}
+        className={style.cover_img_container}
+      >
         <img src={coverImgUrl} alt="" />
       </div>
       <div className={style.title}>{title}</div>
