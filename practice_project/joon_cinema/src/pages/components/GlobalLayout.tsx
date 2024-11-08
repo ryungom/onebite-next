@@ -10,7 +10,7 @@ export default function GlobalLayout({ children }: { children: ReactNode }) {
         </h1>
       </header>
       <main>{children}</main>
-      <footer>--푸터--</footer>
+      <footer>COPYRIGHT @RYUNGOM</footer>
     </div>
   );
 }

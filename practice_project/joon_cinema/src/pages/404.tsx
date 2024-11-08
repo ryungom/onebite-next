@@ -1,3 +1,3 @@
 export default function Page() {
-  return <h1>잘못된페이지에여</h1>;
+  return <h1>4 0 4 N O T F O U N D</h1>;
 }

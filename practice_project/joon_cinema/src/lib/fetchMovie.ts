@@ -31,7 +31,9 @@ export async function fetchMovieRandom(): Promise<MovieData[]> {
   }
 }
 
-export async function fetchOneMovie(movieId: Number): Promise<MovieData | null> {
+export async function fetchOneMovie(
+  movieId: number
+): Promise<MovieData | null> {
   const url = `${baseUrl}/${movieId}`;
   try {
     const res = await fetch(url);

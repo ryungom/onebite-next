@@ -1,25 +1,33 @@
-import { ReactNode } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import SearchLayout from "./components/SearchLayout";
 import style from "./search.module.css";
-import MovieList from "./components/MovieList";
-import { GetServerSidePropsContext, InferGetServerSidePropsType } from "next";
-import { fetchMovie } from "./lib/fetchMovie";
+import MovieDetail from "./components/MovieDetail";
 
-export const getServerSideProps = async (context: GetServerSidePropsContext) => {
-  const query = context.query.q;
-  const searchData = await fetchMovie(query as string);
-  return {
-    props: { searchData },
+import { useRouter } from "next/router";
+import { MovieData } from "@/types";
+import { fetchMovie } from "@/lib/fetchMovie";
+
+// 설정을 아무것도 안해둬서 SSG로 사전랜더링 진행
+export default function Page() {
+  const [searchData, setSearchData] = useState<MovieData[]>([]);
+  const route = useRouter();
+  const q = route.query.q;
+
+  const getData = async () => {
+    const data = await fetchMovie(q as string);
+    setSearchData(data);
   };
-};
 
-export default function Page({ searchData }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  useEffect(() => {
+    getData();
+  }, [q]);
+
   return (
     <div>
       <section>
         <div className={style.movieResult}>
           {searchData.map((movie) => (
-            <MovieList key={movie.id} {...movie} />
+            <MovieDetail key={movie.id} {...movie} />
           ))}
         </div>
       </section>
