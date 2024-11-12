@@ -1,4 +1,18 @@
-export default async function Page({ searchParams }: { searchParams: Promise<{ q: string }> }) {
-  const { q } = await searchParams;
-  return <div>서치페이쥐 : {q}</div>;
+import books from "@/mock/books.json";
+import BookItem from "@/components/book-item";
+
+export default function Page({
+  searchParams,
+}: {
+  searchParams: {
+    q?: string;
+  };
+}) {
+  return (
+    <div>
+      {books.map((book) => (
+        <BookItem key={book.id} {...book} />
+      ))}
+    </div>
+  );
 }
