@@ -2,6 +2,7 @@
 
 import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import style from "./SearchBar.module.css";
 
 export default function SearchBar() {
   const route = useRouter();
@@ -18,17 +19,23 @@ export default function SearchBar() {
     setSearchValue(e.target.value);
   };
   const searchMovie = () => {
-    if (!searchValue) return;
+    if (!searchValue || searchValue === q) return;
     route.push(`/search?q=${searchValue}`);
   };
   const onKeyDownSearch = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter") {
-      route.push(`/search?q=${searchValue}`);
+      searchMovie();
     }
   };
   return (
-    <div>
-      <input type="text" value={searchValue && searchValue} onKeyDown={onKeyDownSearch} onChange={onChangeValue} />
+    <div className={style.inputWrap}>
+      <input
+        type="text"
+        value={searchValue && searchValue}
+        onKeyDown={onKeyDownSearch}
+        onChange={onChangeValue}
+        placeholder="검색해봐..."
+      />
       <button onClick={searchMovie}>검색</button>
     </div>
   );

@@ -1,0 +1,23 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.container section {
+  margin-bottom: 30px;
+}
+.container section h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.movieWrap {
+  display: flex;
+  gap: 5px;
+}
+
+.movieWrap_all {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+}

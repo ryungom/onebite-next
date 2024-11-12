@@ -1,0 +1,11 @@
+.header {
+  color: yellowgreen;
+  font: bold 2rem/1 "Pretendard";
+}
+
+.main {
+  height: 100vh;
+  width: 100vw;
+  max-width: 800px;
+  margin: 30px auto;
+}
