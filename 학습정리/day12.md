@@ -68,16 +68,6 @@
   - ![image](https://github.com/user-attachments/assets/4e499eca-4fd0-4ce8-8c6e-6377431e3797)
   - ![image](https://github.com/user-attachments/assets/76a8ba6c-f3fa-4e44-81dd-033853353678)
 
-
-
- 
-  
-
-
-
-
-
-
 ---
 ### 느낀점
-- 
+- 앱라우터의 데이터 캐싱에 대해서 잘 알아볼 수 있게 되었다. 특히 캐싱 옵션에 대해서 자세히 알고 싶었는데 확실하게 잘 알게 되었다. 그런데 동적 라우트같은 경우는 On-demend 방식이 필요한것 같아서, 하단에 있는 마지막 tags 방법을 써야할것 같은데, 빨리 이방법도 배워보고 싶다.
