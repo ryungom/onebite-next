@@ -7,7 +7,7 @@ const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 export default async function Page({
   searchParams,
 }: {
-  searchParams: { q: string };
+  searchParams: Promise<{ q: string }>;
 }) {
   const { q } = await searchParams;
   const data = await fetch(`${SERVER}/movie/search?q=${q}`, {
@@ -20,7 +20,7 @@ export default async function Page({
       <section>
         <div className={style.movieResult}>
           {searchData.map((movie) => (
-            <MovieDetail {...movie} />
+            <MovieDetail key={movie.id} {...movie} />
           ))}
         </div>
       </section>

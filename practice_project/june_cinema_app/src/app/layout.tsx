@@ -32,7 +32,6 @@ export default function RootLayout({
           <header className={style.header}>
             <Link href={`/`}>륜곰씨-네마</Link>
           </header>
-
           {children}
         </main>
       </body>

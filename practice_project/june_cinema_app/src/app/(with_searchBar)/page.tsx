@@ -1,6 +1,5 @@
 import MovieDetail from "@/components/MovieDetail";
 import style from "./page.module.css";
-import data from "@/app/dummyData/data.json";
 import { MovieData } from "@/types";
 
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
