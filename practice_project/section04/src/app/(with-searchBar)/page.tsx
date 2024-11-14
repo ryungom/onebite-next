@@ -5,7 +5,7 @@ import { BookData } from "@/types";
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 async function AllBooks() {
   try {
-    const res = await fetch(`${SERVER}/book`);
+    const res = await fetch(`${SERVER}/book`, { next: { revalidate: 3 } });
     const books: BookData[] = await res.json();
     return (
       <>
