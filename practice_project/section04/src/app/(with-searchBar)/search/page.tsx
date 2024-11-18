@@ -1,20 +1,21 @@
-import BookItem from "@/components/book-item";
-import { BookData } from "@/types";
-const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
+import { Suspense } from "react";
+// import { BookData } from "@/types";
+import SearchResult from "./SearchResult";
+import BookListSkeleton from "@/app/components/skeleton/book-list-skeleton";
+// import BookItem from "@/components/book-item";
+// import delay from "@/util/delay";
 
-export default async function Page({ searchParams }: { searchParams: Promise<{ q?: string }> }) {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: {
+    q: string;
+  };
+}) {
   const { q } = await searchParams;
-  const res = await fetch(`${SERVER}/book/search?q=${q}`);
-  if (!res.ok) {
-    return <div>페칭오류...</div>;
-  }
-  const books: BookData[] = await res.json();
-
   return (
-    <div>
-      {books.map((book) => (
-        <BookItem key={book.id} {...book} />
-      ))}
-    </div>
+    <Suspense key={q || ""} fallback={<BookListSkeleton count={3} />}>
+      <SearchResult param={q} />
+    </Suspense>
   );
 }
