@@ -1,0 +1,6 @@
+.container {
+  aspect-ratio: 2/3;
+  width: 100%;
+  max-width: 300px;
+  background: gray;
+}

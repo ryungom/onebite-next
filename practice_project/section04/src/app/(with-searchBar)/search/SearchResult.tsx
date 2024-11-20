@@ -3,7 +3,7 @@ import { BookData } from "@/types";
 import delay from "@/util/delay";
 
 export default async function SearchResult({ param }: { param: string }) {
-  delay(1500);
+  await delay(1500);
   const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
   const res = await fetch(`${SERVER}/book/search?q=${param}`);
