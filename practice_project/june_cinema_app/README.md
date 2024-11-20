@@ -12,3 +12,6 @@
 # ⭐ day13 : 풀 라우트 캐싱 작업
 - ![image](https://github.com/user-attachments/assets/24e89639-a36f-4f3b-8d08-4161ad55d60f)
 - generateStaticParams 안에 데이터 페칭을 넣는방법은 처음 알았다.... 여기에는 정적인 SSG 캐싱을 위해서 넣어야 하니까 서버액션을 넣으면 당연히 안되는건줄 알고... 모두 다 페칭이 없는 값을 넣어야 하나 싶었는데. 이렇게 모든 페이지를 넣을 수가 있구나.
+
+# ⭐ day14,15 : 스트리밍 및 스켈레톤 적용
+- ![녹음 2024-11-20 121554](https://github.com/user-attachments/assets/687a1ca8-bda2-4338-a26f-15160d5ab123)
