@@ -1,22 +1,20 @@
-import { MovieData } from "@/types";
-import style from "./page.module.css";
-import { notFound } from "next/navigation";
+import { MovieData } from '@/types';
+import style from './page.module.css';
+import { notFound } from 'next/navigation';
+import MovieReviewForm from '@/components/MoviewReview';
+import MovieReviewList from '@/components/MovieReviewList';
 
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
 export async function generateStaticParams() {
   // return [{ id: "1022789" }, { id: "533535" }, { id: "1314450" }];
   const data = await fetch(`${SERVER}/movie/`);
-  if (!data.ok) throw new Error("스태틱파람 호출 실패");
+  if (!data.ok) throw new Error('스태틱파람 호출 실패');
   const staticAllData: MovieData[] = await data.json();
   return staticAllData.map(({ id }) => ({ id: id.toString() }));
 }
 
-export default async function Page({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const data = await fetch(`${SERVER}/movie/${id}`);
   if (!data.ok) {
@@ -27,16 +25,8 @@ export default async function Page({
   }
   const thisMovie: MovieData = await data.json();
 
-  const {
-    title,
-    releaseDate,
-    company,
-    genres,
-    subTitle,
-    description,
-    runtime,
-    posterImgUrl,
-  } = thisMovie;
+  const { title, releaseDate, company, genres, subTitle, description, runtime, posterImgUrl } =
+    thisMovie;
 
   return (
     <div className={style.container}>
@@ -49,12 +39,12 @@ export default async function Page({
           <h2 className={style.h2}>{title}</h2>
           <aside>
             {genres.map((item) => (
-              <span key={"id_" + item}>{item}</span>
+              <span key={'id_' + item}>{item}</span>
             ))}
           </aside>
         </div>
         <div className={style.title_runTime}>
-          <span>{runtime + "분"}</span>
+          <span>{runtime + '분'}</span>
         </div>
       </section>
 
@@ -75,6 +65,9 @@ export default async function Page({
           <span>{company}</span>
         </div>
       </section>
+
+      <MovieReviewForm thisId={id} />
+      <MovieReviewList thisId={id} />
     </div>
   );
 }
