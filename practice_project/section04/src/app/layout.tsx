@@ -4,8 +4,10 @@ import style from "./layout.module.css";
 
 export default function RootLayout({
   children,
+  modalComp,
 }: Readonly<{
   children: React.ReactNode;
+  modalComp: React.ReactNode;
 }>) {
   return (
     <html lang="en">
@@ -17,6 +19,8 @@ export default function RootLayout({
           <main>{children}</main>
           <footer>제작 @winterlood</footer>
         </div>
+        {modalComp}
+        <div id="modal-root"></div>
       </body>
     </html>
   );

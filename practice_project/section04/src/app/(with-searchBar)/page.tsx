@@ -2,12 +2,12 @@ import BookItem from "@/components/book-item";
 import style from "./page.module.css";
 import { BookData } from "@/types";
 import { Suspense } from "react";
-import delay from "@/util/delay";
+// import delay from "@/util/delay";
 import BookListSkeleton from "../components/skeleton/book-list-skeleton";
 
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 async function AllBooks() {
-  await delay(1500);
+  // await delay(1500);
   const res = await fetch(`${SERVER}/book`, { next: { revalidate: 3 } });
   if (!res.ok) return <div>올북스 오류가 발생해쪄용...3</div>;
   const books: BookData[] = await res.json();
@@ -20,7 +20,7 @@ async function AllBooks() {
   );
 }
 async function RecoBooks() {
-  await delay(3000);
+  // await delay(3000);
   const res = await fetch(`${SERVER}/book/random`);
   const books: BookData[] = await res.json();
   return (
