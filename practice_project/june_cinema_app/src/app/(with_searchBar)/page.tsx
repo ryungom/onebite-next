@@ -8,7 +8,7 @@ import MovieLoadingWrap from '@/components/skeleton/MovieLoadingWrap';
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
 async function AllMovie() {
-  await Delay(3000);
+  // await Delay(3000);
 
   try {
     const data = await fetch(`${SERVER}/movie`, { next: { revalidate: 60 } });
@@ -26,7 +26,7 @@ async function AllMovie() {
 }
 
 async function RandomMovie() {
-  await Delay(3000);
+  // await Delay(3000);
   try {
     const data = await fetch(`${SERVER}/movie/random`, {
       next: { revalidate: 3 },

@@ -15,7 +15,7 @@ export default function MovieReviewForm({ thisId }: { thisId: string }) {
     <>
       <form action={formAction} className={style.reviewInput}>
         <input type="hidden" name="id" value={thisId} />
-        <textarea name="reviewContent" id="" placeholder="리뷰를 입력해주세요"></textarea>
+        <textarea name="reviewContent" id="" placeholder="리뷰를 입력해주세요" />
         <div>
           <input type="text" name="author" placeholder="작성자" />
           <button disabled={isPending} type="submit">

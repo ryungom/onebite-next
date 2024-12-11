@@ -25,7 +25,7 @@ export async function fetchReviewPost(_: any, formData: FormData) {
   }
 
   try {
-    const res = await fetch(`${SERVER}/revieww`, {
+    const res = await fetch(`${SERVER}/review`, {
       method: 'POST',
       body: JSON.stringify({ movieId, content, author }),
     });
