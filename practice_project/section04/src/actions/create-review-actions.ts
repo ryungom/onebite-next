@@ -3,7 +3,7 @@ import { revalidateTag } from "next/cache";
 
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
-export async function createReviewAction(formData: FormData) {
+export async function createReviewAction(_: any, formData: FormData) {
   const bookId = formData.get("bookId")?.toString();
   const content = formData.get("content")?.toString();
   const author = formData.get("author")?.toString();

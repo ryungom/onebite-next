@@ -1,14 +1,22 @@
 import style from "./page.module.css";
 import { notFound } from "next/navigation";
-import { ReviewData } from "@/types";
+import { BookData, ReviewData } from "@/types";
 import ReviewItem from "@/app/components/review-item";
 import ReviewEditor from "@/app/components/review-editor";
-import { revalidateTag } from 'next/cache';
+import { revalidateTag } from "next/cache";
 
 const SERVER = process.env.NEXT_PUBLIC_API_SERVER_URL;
 
-export function generateStaticParams() {
-  return [{ id: "1" }, { id: "2" }, { id: "3" }];
+export async function generateStaticParams() {
+  const res = await fetch(`${SERVER}/book`);
+  if (!res.ok) throw new Error(res.statusText);
+
+  const books: BookData[] = await res.json();
+
+  // return [{ id: "1" }, { id: "2" }, { id: "3" }];
+  return books.map((book) => ({
+    id: book.id.toString(),
+  }));
 }
 
 async function BookDetail({ bookId }: { bookId: string }) {

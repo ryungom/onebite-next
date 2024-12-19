@@ -8,9 +8,9 @@ import BookListSkeleton from "@/app/components/skeleton/book-list-skeleton";
 export default async function Page({
   searchParams,
 }: {
-  searchParams: {
+  searchParams: Promise<{
     q: string;
-  };
+  }>;
 }) {
   const { q } = await searchParams;
   return (
